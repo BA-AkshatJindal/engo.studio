@@ -220,9 +220,10 @@
       "name": "Sprint 1 - Foundation & FDE Loop",
       "startDate": "2026-11-01",
       "endDate": "2026-11-14",
-      "status": "Active",
+      "status": "Completed",
       "targetPoints": 34,
-      "goal": "Deliver zero-friction FDE workflow from PRD to Test"
+      "goal": "Deliver zero-friction FDE workflow from PRD to Test",
+      "completedDate": "2026-11-06T19:52:38.813Z"
     },
     {
       "id": "sprint_2",
@@ -278,7 +279,7 @@
       "componentId": "comp_pm_knowledge",
       "projectId": "proj_engo_01",
       "epicId": "epic_1",
-      "sprintId": "sprint_1",
+      "sprintId": "sprint_2",
       "storyPoints": 5,
       "status": "In Progress",
       "priority": "High",
@@ -296,7 +297,7 @@
       "componentId": "comp_pm_knowledge",
       "projectId": "proj_engo_01",
       "epicId": "epic_2",
-      "sprintId": "sprint_1",
+      "sprintId": "sprint_2",
       "storyPoints": 8,
       "status": "In Progress",
       "priority": "Urgent",
@@ -331,9 +332,9 @@
       "componentId": "comp_server_api",
       "projectId": "proj_engo_01",
       "epicId": "epic_1",
-      "sprintId": "sprint_1",
+      "sprintId": "sprint_2",
       "storyPoints": 5,
-      "status": "Backlog",
+      "status": "To Do",
       "priority": "High",
       "assignee": "Akshat Jindal",
       "type": "feature",
@@ -359,6 +360,34 @@
         "public/app.jsx"
       ],
       "description": "Ensure high-contrast typography, frosted light glass panels, and crisp daylight UI."
+    },
+    {
+      "id": "TASK-8",
+      "title": "Implement dentish website Core API",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "To Do",
+      "priority": "High",
+      "assignee": "Akshat Jindal",
+      "type": "feature",
+      "files": [
+        "server.js"
+      ],
+      "description": "Auto-decomposed from PRD: dentish website"
+    },
+    {
+      "id": "TASK-9",
+      "title": "Build Frontend Component for dentish website",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "To Do",
+      "priority": "Medium",
+      "assignee": "Sarah Chen",
+      "type": "feature",
+      "files": [
+        "public/app.jsx"
+      ],
+      "description": "Implement UI views according to Acceptance Criteria."
     }
   ],
   "bugs": [
@@ -393,6 +422,19 @@
         "public/app.jsx"
       ],
       "description": "Debounce cursor position callback during high-frequency token generation bursts."
+    },
+    {
+      "id": "BUG-103",
+      "title": "Verify edge cases & integration tests for dentish website",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "To Do",
+      "severity": "Medium",
+      "assignee": "ENGO Autonomous Agent",
+      "files": [
+        "test/automated_suite.test.js"
+      ],
+      "description": "Automated test suite coverage check."
     }
   ]
 }
