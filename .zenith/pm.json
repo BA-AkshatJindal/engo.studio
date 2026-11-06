@@ -1,0 +1,182 @@
+{
+  "project": {
+    "id": "proj_engo_01",
+    "name": "ENGO.STUD Core Engine",
+    "description": "Forward Deployed Engineering OS: Unified Code, Agile, Knowledge & Agentic Delivery",
+    "author": "Designed & Developed by Akshat Jindal",
+    "version": "3.0.0"
+  },
+  "team": [
+    {
+      "id": "usr_akshat",
+      "name": "Akshat Jindal",
+      "role": "Technical Product Manager / Lead FDE",
+      "avatar": "⚡"
+    },
+    {
+      "id": "usr_ai_agent",
+      "name": "ENGO Autonomous Agent",
+      "role": "AI Bug Hunter & Test Engineer",
+      "avatar": "🤖"
+    },
+    {
+      "id": "usr_sarah",
+      "name": "Sarah Chen",
+      "role": "Full-Stack Developer",
+      "avatar": "👩‍💻"
+    },
+    {
+      "id": "usr_marcus",
+      "name": "Marcus Vance",
+      "role": "QA & Automation Engineer",
+      "avatar": "👨‍🔬"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "m1",
+      "title": "v3.0 FDE Unified Alpha",
+      "dueDate": "2026-11-15",
+      "status": "In Progress",
+      "progress": 85
+    },
+    {
+      "id": "m2",
+      "title": "v3.1 Autonomous Agent Fleet",
+      "dueDate": "2026-11-30",
+      "status": "Planned",
+      "progress": 40
+    },
+    {
+      "id": "m3",
+      "title": "v3.2 Enterprise Knowledge RAG",
+      "dueDate": "2026-12-15",
+      "status": "Planned",
+      "progress": 15
+    }
+  ],
+  "epics": [
+    {
+      "id": "epic_1",
+      "title": "Unified Agile & Code Lifecycle",
+      "description": "Synchronize Kanban tasks with Monaco editor and Git branches seamlessly.",
+      "status": "Active",
+      "color": "#818cf8"
+    },
+    {
+      "id": "epic_2",
+      "title": "Autonomous Bug Remediation",
+      "description": "Agentic tool to reproduce, patch, test, and stage bug fixes automatically.",
+      "status": "Active",
+      "color": "#c084fc"
+    },
+    {
+      "id": "epic_3",
+      "title": "Enterprise Knowledge Grounding",
+      "description": "Inject company ADRs and coding standards directly into model context.",
+      "status": "In Planning",
+      "color": "#38bdf8"
+    }
+  ],
+  "sprints": [
+    {
+      "id": "sprint_1",
+      "name": "Sprint 1 - Foundation & FDE Loop",
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-14",
+      "status": "Active",
+      "goal": "Deliver zero-friction FDE workflow from PRD to Test"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "TASK-101",
+      "title": "Initialize Pluggable Multi-LLM Gateway",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "Done",
+      "priority": "High",
+      "assignee": "Akshat Jindal",
+      "type": "feature",
+      "files": [
+        "server.js",
+        "public/app.jsx"
+      ],
+      "description": "Support Claude 3.7, Gemini 3.8, Antigravity, and Local Ollama with unified streaming SSE."
+    },
+    {
+      "id": "TASK-102",
+      "title": "Design Soft Modern Component System",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "In Progress",
+      "priority": "Urgent",
+      "assignee": "Akshat Jindal",
+      "type": "feature",
+      "files": [
+        "public/app.jsx",
+        "public/style.css"
+      ],
+      "description": "Implement Radix/Linear-inspired soft dark cards, pill badges, and frosted glass backdrops."
+    },
+    {
+      "id": "TASK-103",
+      "title": "AI PRD & Spec Studio with Auto-Ticket Decomposition",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "To Do",
+      "priority": "High",
+      "assignee": "Akshat Jindal",
+      "type": "feature",
+      "files": [
+        "server.js",
+        "public/app.jsx"
+      ],
+      "description": "Convert unstructured client briefs into executive PRDs and automatically generate child tasks."
+    },
+    {
+      "id": "TASK-104",
+      "title": "Embedded Browser Panel with Responsive Viewport Testing",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "In Progress",
+      "priority": "High",
+      "assignee": "Sarah Chen",
+      "type": "feature",
+      "files": [
+        "public/app.jsx"
+      ],
+      "description": "Interactive browser with Mobile/Tablet/Desktop viewport testing and local app live reload."
+    }
+  ],
+  "bugs": [
+    {
+      "id": "BUG-401",
+      "title": "Terminal output line-break normalization on Windows CRLF",
+      "epicId": "epic_1",
+      "sprintId": "sprint_1",
+      "status": "In Progress",
+      "severity": "Medium",
+      "assignee": "ENGO Autonomous Agent",
+      "files": [
+        "welcome.py",
+        "server.js"
+      ],
+      "description": "PowerShell output occasionally escapes backslashes in path strings. Agent auto-patch scheduled.",
+      "reproduction": "Run python welcome.py inside PowerShell terminal tab."
+    },
+    {
+      "id": "BUG-402",
+      "title": "Monaco cursor tracker lag during large file streaming",
+      "epicId": "epic_2",
+      "sprintId": "sprint_1",
+      "status": "To Do",
+      "severity": "Low",
+      "assignee": "ENGO Autonomous Agent",
+      "files": [
+        "public/app.jsx"
+      ],
+      "description": "Debounce cursor position callback during high-frequency token generation bursts."
+    }
+  ]
+}
