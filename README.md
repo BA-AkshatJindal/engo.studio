@@ -1,21 +1,63 @@
-# 🚀 Welcome to Zenith IDE
+# ⚡ ENGO.STUDIO — The Forward Deployed Engineering OS
+> **Designed & Developed by Akshat Jindal**
 
-Zenith is a lightning-fast, modern Integrated Development Environment built for productivity and seamless coding.
+**ENGO.STUDIO** (Engineering + Studio) is an all-in-one unified Operating System created specifically for **Forward Deployed Engineers (FDEs)**, Technical Product Managers, Full-Stack Developers, and QA Engineers.
 
-## ✨ Key Features
-- **Monaco Engine**: The same powerful editor powering VS Code with full IntelliSense, autocomplete, syntax coloring, and code folding.
-- **Instant Code Runner**: Run Python, JavaScript (Node.js), and Shell scripts directly with streaming live terminal output.
-- **Live Web Preview**: Built-in side-by-side or tab preview for HTML/CSS/JS with automatic refresh.
-- **File Explorer**: Full workspace filesystem control—create, rename, delete, and switch between multiple open tabs.
-- **Customizable Themes**: Switch effortlessly between VS Dark, Monokai, Night Owl, Dracula, and GitHub Dark.
+Instead of fragmenting work across Jira, Confluence, VS Code, Postman, Chrome, and GitHub, ENGO.STUDIO unifies the entire software delivery lifecycle into a single seamless, high-performance workspace.
+
+---
+
+## 🌟 Core Modules
+
+1. **💻 Code Studio**:
+   - High-performance Monaco editor with custom `engo-pro` theme.
+   - Dual-mode multi-terminals (PowerShell, Bash) and integrated AI REPL with model switching (Claude 3.7 Sonnet, Gemini, Antigravity).
+   - Code execution engine with real-time process streaming.
+
+2. **📋 Agile Project OS**:
+   - Kanban board with real-time sprint metrics (`Backlog`, `To Do`, `In Progress`, `In Review`, `Done`).
+   - Deep two-way ticket-to-code binding: click any bug or task to open linked files or trigger autonomous resolution.
+
+3. **📝 AI PRD & Requirements Studio**:
+   - Converts client briefs and initiative descriptions into production-grade PRDs.
+   - Grounded automatically with enterprise architecture guidelines and ADRs.
+   - 1-Click Ticket Decomposition: turns user stories into sprint tasks and bug records directly in the Project OS.
+
+4. **🧠 Enterprise Knowledge Vault**:
+   - Central repository for Architecture Decision Records (ADRs), Coding Standards, API Contracts, and Domain Logic.
+   - Automatically injected as context into AI agents for zero-hallucination code generation.
+
+5. **🤖 Autonomous Agents Fleet**:
+   - **Bug Hunter & Surgical Fixer**: Analyzes ticket symptoms, diagnoses root causes, generates verified code patches.
+   - **Test & QA Suite Generator**: Generates comprehensive unit and integration tests based on PRD acceptance criteria.
+   - **Feature Scaffolder**: Scaffolds full-stack boilerplates and schemas directly from user story specifications.
+
+6. **🌐 Embedded Real Web Browser**:
+   - Native responsive viewport frames: Mobile (375px), Tablet (768px), and Desktop (100%).
+   - Integrated reverse-proxy engine (`/api/proxy?url=...`) bypassing `X-Frame-Options` and CSP headers to test live external applications directly inside the IDE.
+
+7. **🔀 Git & Pull Request Manager**:
+   - Visual branch tracking, staging, AI-generated semantic commit messages, and in-app Pull Request submission.
+
+---
+
+## 👥 Role-Based Workspaces
+
+Switch instantly via the top header pills:
+- **👔 Technical Product Manager**: Full access to all modules (Code, Project OS, PRDs, Knowledge Vault, Agents, Browser, Git).
+- **💻 Developer**: Streamlined focus on Code Studio, Project OS Kanban, Embedded Browser, and Git.
+- **🧪 QA Tester**: Dedicated focus on Autonomous Test Agents, Embedded Browser, and Bug Kanban.
+
+---
 
 ## ⌨️ Essential Keyboard Shortcuts
-- `F5` or `Ctrl + Enter`: Run current file
+- `F5`: Run current file
 - `Ctrl + S`: Save active document
 - `Ctrl + O`: Quick Open file
 - `Ctrl + N`: Create new file
 - `Ctrl + W`: Close active tab
-- `Ctrl + \`: Toggle output console panel
+- `Ctrl + \`: Toggle terminal / output console panel
 - `Shift + Alt + F`: Format code
 
-Enjoy coding in Zenith IDE! ⚡
+---
+*ENGO.STUDIO v3.0.0 — Designed & Developed with precision by Akshat Jindal.*
