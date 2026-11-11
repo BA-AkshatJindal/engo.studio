@@ -1,101 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENGO.STUDIO - Live Workspace Preview</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENGO.STUDIO — Forward Deployed Engineering OS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <div class="badge">ENGO.STUDIO LIVE PREVIEW</div>
-      <h1>Welcome to ENGO.STUDIO</h1>
-      <p>Designed & Developed by <strong>Akshat Jindal</strong></p>
-      <p style="margin-top: 6px; font-size: 13px; opacity: 0.8;">The Forward Deployed Engineering OS with embedded real-time browser preview.</p>
-      <div class="stats">
-        <div class="stat-box">
-          <span class="num" id="particle-count">100</span>
-          <span class="label">Interactive Particles</span>
-        </div>
-        <div class="stat-box">
-          <span class="num" id="fps-counter">60</span>
-          <span class="label">FPS Target</span>
-        </div>
-      </div>
-      <button id="color-btn" onclick="randomizeColors()">Randomize Colors 🎨</button>
-    </div>
-  </div>
 
+  <!-- Animated Background -->
   <canvas id="bg-canvas"></canvas>
 
-  <script>
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+  <!-- Noise overlay -->
+  <div class="noise-overlay"></div>
 
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
+  <!-- ───── NAV ───── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">ENGO<span class="logo-dot">.</span>STUDIO</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <span class="status-dot"></span>
+        <span class="status-label">Live Preview Active</span>
+      </div>
+    </div>
+  </nav>
 
-    let hue = 220;
-    const particles = [];
-    const count = 80;
+  <!-- ───── HERO ───── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        Forward Deployed Engineering OS &nbsp;·&nbsp; Designed by Akshat Jindal
+      </div>
 
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
-        radius: Math.random() * 3 + 1
-      });
-    }
+      <h1 class="hero-title">
+        Ship Code at the
+        <span class="gradient-text">Speed of Thought</span>
+      </h1>
 
-    function randomizeColors() {
-      hue = Math.floor(Math.random() * 360);
-      document.documentElement.style.setProperty('--primary', `hsl(${hue}, 80%, 60%)`);
-    }
+      <p class="hero-sub">
+        ENGO.STUDIO is a unified Agile &amp; Code Studio that closes the loop between
+        planning, coding, reviewing, and shipping — all from one intelligent environment.
+      </p>
 
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="showToast('🚀 Launching ENGO.STUDIO workspace…')">
+          Open Workspace <span class="btn-arrow">→</span>
+        </button>
+        <button class="btn btn-ghost" onclick="showToast('📖 Documentation coming soon!')">
+          Read the Docs
+        </button>
+      </div>
 
-      // Connect particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.strokeStyle = `hsla(${hue}, 70%, 60%, ${1 - dist / 120})`;
-            ctx.lineWidth = 0.8;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
+      <!-- Terminal mock -->
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">engo.studio — bash</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line"><span class="prompt">$</span> <span id="typed-text"></span><span class="cursor">▌</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      // Draw points
-      for (const p of particles) {
-        ctx.fillStyle = `hsl(${hue}, 80%, 70%)`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
+  <!-- ───── STATS ───── -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card" data-count="10x">
+        <div class="stat-num" data-target="10">0</div>
+        <div class="stat-suffix">x</div>
+        <div class="stat-label">Faster Deployment</div>
+      </div>
+      <div class="stat-card" data-count="99.9%">
+        <div class="stat-num" data-target="99">0</div>
+        <div class="stat-suffix">.9%</div>
+        <div class="stat-label">Uptime SLA</div>
+      </div>
+      <div class="stat-card" data-count="<50ms">
+        <div class="stat-num" data-target="50">&lt;50</div>
+        <div class="stat-suffix">ms</div>
+        <div class="stat-label">Preview Latency</div>
+      </div>
+      <div class="stat-card" data-count="∞">
+        <div class="stat-num">∞</div>
+        <div class="stat-suffix"></div>
+        <div class="stat-label">Integrations</div>
+      </div>
+    </div>
+  </section>
 
-        p.x += p.vx;
-        p.y += p.vy;
+  <!-- ───── FEATURES ───── -->
+  <section class="section" id="features">
+    <div class="section-inner">
+      <div class="section-label">Core Capabilities</div>
+      <h2 class="section-title">Everything an Engineering Team Needs</h2>
+      <p class="section-sub">From ticket to deploy — ENGO.STUDIO handles the entire forward-deployed engineering lifecycle.</p>
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-      }
+      <div class="features-grid">
 
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
+        <div class="feature-card featured">
+          <div class="feature-icon">⚡</div>
+          <h3>AI Engineering Copilot</h3>
+          <p>Context-aware code generation, real-time review, and intelligent refactoring powered by state-of-the-art LLMs baked directly into your IDE.</p>
+          <div class="feature-tag">Powered by Gemini</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔴</div>
+          <h3>Live Browser Preview</h3>
+          <p>Instant hot-reload with sub-50ms latency. See your changes reflected in real-time without leaving the editor.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Agile Sprint Board</h3>
+          <p>Integrated Kanban &amp; sprint planning. Link issues directly to commits, PRs, and deployments — zero context switching.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <h3>Automated Test Runner</h3>
+          <p>Run unit, integration, and E2E tests inline. Test coverage is surfaced directly alongside your code as you write.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Git-Native Workflow</h3>
+          <p>Branch, commit, merge, and PR — all from the ENGO.STUDIO command palette with AI-generated commit messages.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>One-Click Deploy</h3>
+          <p>Integrated CI/CD pipelines with preview environments. Ship to staging or production without touching a terminal.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── TECH STACK ───── -->
+  <section class="section alt" id="stack">
+    <div class="section-inner">
+      <div class="section-label">Technology</div>
+      <h2 class="section-title">Built on a Modern Stack</h2>
+
+      <div class="stack-grid">
+        <div class="stack-pill">🐍 Python</div>
+        <div class="stack-pill">⚛️ React</div>
+        <div class="stack-pill">🟦 TypeScript</div>
+        <div class="stack-pill">🦀 Rust</div>
+        <div class="stack-pill">🐳 Docker</div>
+        <div class="stack-pill">☸️ Kubernetes</div>
+        <div class="stack-pill">🔥 Node.js</div>
+        <div class="stack-pill">🤖 Gemini API</div>
+        <div class="stack-pill">🗃️ PostgreSQL</div>
+        <div class="stack-pill">⚡ Redis</div>
+        <div class="stack-pill">🌐 WebSockets</div>
+        <div class="stack-pill">📦 Webpack</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── WORKFLOW ───── -->
+  <section class="section" id="workflow">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">The Forward Deployed Engineering Loop</h2>
+
+      <div class="workflow-steps">
+        <div class="workflow-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Plan</h3>
+            <p>Create epics, stories, and tasks in the integrated Agile board. AI suggests acceptance criteria automatically.</p>
+          </div>
+        </div>
+        <div class="workflow-connector">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Code</h3>
+            <p>Write code with your AI copilot in a fully-featured IDE. Live preview updates as you type.</p>
+          </div>
+        </div>
+        <div class="workflow-connector">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Review</h3>
+            <p>AI-assisted code review surfaces bugs, security issues, and performance bottlenecks before human review.</p>
+          </div>
+        </div>
+        <div class="workflow-connector">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">↓</div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Ship</h3>
+            <p>One-click deployments with rollback, canary releases, and automatic monitoring dashboards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── ABOUT ───── -->
+  <section class="section alt" id="about">
+    <div class="section-inner about-inner">
+      <div class="about-visual">
+        <div class="avatar-ring">
+          <div class="avatar">AJ</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">The Maker</div>
+        <h2 class="section-title">Akshat Jindal</h2>
+        <p>ENGO.STUDIO was born from a simple frustration: engineering teams waste hours every week context-switching between project management tools, IDEs, CI dashboards, and communication apps.</p>
+        <p style="margin-top:16px;">The vision is a single, opinionated workspace where the <strong>entire forward-deployed engineering lifecycle</strong> lives — tightly integrated, AI-accelerated, and always live.</p>
+        <div class="about-badges">
+          <span class="about-badge">🏗️ Forward Deployed Engineering</span>
+          <span class="about-badge">🤖 AI-First IDE</span>
+          <span class="about-badge">🚀 Agile OS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── CTA ───── -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-glow"></div>
+      <h2>Ready to Engineer at Full Speed?</h2>
+      <p>Join forward-deployed engineering teams using ENGO.STUDIO to close the gap between idea and production.</p>
+      <button class="btn btn-primary btn-lg" onclick="showToast('🎉 You\'re on the waitlist! We\'ll be in touch.')">
+        Get Early Access &nbsp; ✨
+      </button>
+    </div>
+  </section>
+
+  <!-- ───── FOOTER ───── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">ENGO<span class="logo-dot">.</span>STUDIO</span>
+      </div>
+      <p class="footer-copy">© 2026 ENGO.STUDIO · Designed &amp; Developed by <strong>Akshat Jindal</strong></p>
+      <p class="footer-tagline">Forward Deployed Engineering OS</p>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
 </body>
 </html>

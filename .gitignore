@@ -1,0 +1,7 @@
+# ENGO.STUDIO Workspace Git Ignore
+.zenith/
+node_modules/
+*.log
+*.env
+*.pem
+*.key

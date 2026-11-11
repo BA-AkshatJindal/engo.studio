@@ -1,7 +1,8 @@
 """
 ===========================================================
-  🚀 Welcome to Zenith IDE!
-  A fast, modern development environment with live execution.
+  🚀 Welcome to ENGO.STUDIO!
+  The Forward Deployed Engineering OS | Unified Agile & Code Studio
+  Designed & Developed by Akshat Jindal
 ===========================================================
 """
 
@@ -15,11 +16,11 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 def banner():
     print(r"""
-  ____ _____ _   _ ___ _____ _   _   ___ ____  _____ 
- |_  /| ____| \ | |_ _|_   _| | | | |_ _|  _ \| ____|
-  / / |  _| |  \| || |  | | | |_| |  | || | | |  _|  
- / /__| |___| |\  || |  | | |  _  |  | || |_| | |___ 
-/_____|_____|_| \_|___| |_| |_| |_| |___|____/|_____|
+ _____ _   _  ____  ___        ____ _____ _   _ ____ ___ ___  
+| ____| \ | |/ ___|/ _ \      / ___|_   _| | | |  _ \_ _/ _ \ 
+|  _| |  \| | |  _| | | |_____\___ \ | | | | | | | | | | | | |
+| |___| |\  | |_| | |_| |_____|___) || | | |_| | |_| | | |_| |
+|_____|_| \_|\____|\___/     |____/ |_|  \___/|____/___|\___/ 
     """)
     print("✨ Running on Python", sys.version.split()[0])
     print("💻 System Platform:", platform.system(), platform.release(), platform.machine())
